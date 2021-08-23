@@ -7,23 +7,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
-    name: tacocat-wavefront-proxy
-  name: tacocat-wavefront-proxy
-  namespace: tacocat
+    app: polyglot-app
+    name: polyglot-app-wavefront-proxy
+  name: polyglot-app-wavefront-proxy
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
     spec:
       containers:
-      - name: tacocat-wavefront-proxy
-        image: wavefronthq/proxy:9.1
+      - name: polyglot-app-wavefront-proxy
+        image: projects.registry.vmware.com/tanzu_observability/proxy:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: WAVEFRONT_URL
@@ -48,10 +48,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tacocat-wavefront-proxy
+  name: polyglot-app-wavefront-proxy
   labels:
-    app: tacocat
-  namespace: tacocat
+    app: polyglot-app
+  namespace: polyglot-app
 spec:
   ports:
   - name: wavefront
@@ -62,4 +62,4 @@ spec:
     targetPort: 30000
     protocol: TCP
   selector:
-    app: tacocat
+    app: polyglot-app

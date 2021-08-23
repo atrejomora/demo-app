@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: shopping
     shard: blue
   name: shopping-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: shopping
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: shopping
         shard: blue
     spec:
       containers:
       - name: shopping
-        image: 192.168.1.8/demo-app/shopping:latest
+        image: harbor.pdmodernapps.com/atrejomora/shopping:latest
         imagePullPolicy: Always
         command:
         - "java"
@@ -56,28 +56,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: shopping
     shard: green
   name: shopping-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: shopping
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: shopping
         shard: green
     spec:
       containers:
         - name: shopping
-          image: 192.168.1.8/demo-app/shopping:latest
+          image: harbor.pdmodernapps.com/atrejomora/shopping:latest
           imagePullPolicy: Always
           command:
             - "java"

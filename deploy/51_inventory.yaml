@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: inventory
     shard: blue
   name: inventory-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: inventory
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: inventory
         shard: blue
     spec:
       containers:
       - name: inventory
-        image: 192.168.1.8/demo-app/inventory:latest
+        image: harbor.pdmodernapps.com/atrejomora/inventory:latest
         imagePullPolicy: Always
         command:
         - "/inventory"
@@ -50,28 +50,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: inventory
     shard: green
   name: inventory-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: inventory
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: inventory
         shard: green
     spec:
       containers:
         - name: inventory
-          image: 192.168.1.8/demo-app/inventory:latest
+          image: harbor.pdmodernapps.com/atrejomora/inventory:latest
           imagePullPolicy: Always
           command:
             - "/inventory"
@@ -98,10 +98,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: inventory
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: inventory  
   type: ClusterIP
   ports:

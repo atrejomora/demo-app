@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: loadgen
   name: loadgen
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: loadgen
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: loadgen
     spec:
       containers:
       - name: loadgen
-        image: 192.168.1.8/demo-app/loadgen:latest
+        image: harbor.pdmodernapps.com/atrejomora/loadgen:latest
         imagePullPolicy: Always
         command:
         - "java"

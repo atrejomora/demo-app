@@ -2,11 +2,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-config-blue
-  namespace: tacocat
+  namespace: polyglot-app
 data:
   delivery-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: delivery
     shard: blue
     customTags:
@@ -25,15 +25,15 @@ data:
 
   inventory.conf: |
     {
-    	"application": "tacocat",
+    	"application": "polyglot-app",
     	"service":     "inventory",
-    	"cluster":     "cluster1",
+    	"cluster":     "tkg-cluster",
     	"shard":       "blue",	
     
     	"inventoryHost": "0.0.0.0:60001",
     	"warehouseHost": "warehouse:50060",
     
-    	"proxyHost":              "tacocat-wavefront-proxy",
+    	"proxyHost":              "polyglot-app-wavefront-proxy",
     	"proxyPort":              2878,
     	"proxyDistributionsPort": 40000,
     	"proxyTracingPort":       30000,
@@ -46,8 +46,8 @@ data:
     }
 
   notification-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: notification
     shard: blue
     customTags:
@@ -68,8 +68,8 @@ data:
 
 
   packaging-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: packaging
     shard: blue
     customTags:
@@ -82,8 +82,8 @@ data:
     wfReportingConfigYamlFile: "/conf/wf-config.yaml"
 
   payments-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: payments
     shard: blue
     customTags:
@@ -98,8 +98,8 @@ data:
 
 
   printing-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: printing
     shard: blue
     customTags:
@@ -113,8 +113,8 @@ data:
     wfReportingConfigYamlFile: "/conf/wf-config.yaml"
 
   shopping-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: shopping
     shard: blue
     customTags:
@@ -144,7 +144,7 @@ data:
     wfReportingConfigYamlFile: "/conf/wf-config.yaml"
 
   shop-ui-app-tags.yaml: |
-    application: tacocat
+    application: polyglot-app
     cluster: to-cp-demo-cluster-12
     service: shop-ui
     shard: blue
@@ -157,8 +157,8 @@ data:
       port: 8080
 
   styling-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: styling
     shard: blue
     customTags:
@@ -188,8 +188,8 @@ data:
     wfReportingConfigYamlFile: "/conf/wf-config.yaml"
 
   warehouse-app-tags.yaml: |
-    application: tacocat
-    cluster: cluster1
+    application: polyglot-app
+    cluster: tkg-cluster
     service: warehouse
     shard: blue
     customTags:
@@ -199,7 +199,7 @@ data:
 
   wf-config.yaml: |
     reportingMechanism: proxy
-    proxyHost: tacocat-wavefront-proxy
+    proxyHost: polyglot-app-wavefront-proxy
     proxyMetricsPort: 2878
     proxyDistributionsPort: 2878
     proxyTracingPort: 30000

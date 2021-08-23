@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: printing
     shard: blue
   name: printing-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: printing
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: printing
         shard: blue
     spec:
       containers:
       - name: printing
-        image: 192.168.1.8/demo-app/printing:latest
+        image: harbor.pdmodernapps.com/atrejomora/printing:latest
         imagePullPolicy: Always
         command:
         - "java"
@@ -52,28 +52,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: printing
     shard: green
   name: printing-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: printing
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: printing
         shard: green
     spec:
       containers:
         - name: printing
-          image: 192.168.1.8/demo-app/printing:latest
+          image: harbor.pdmodernapps.com/atrejomora/printing:latest
           imagePullPolicy: Always
           command:
             - "java"
@@ -102,10 +102,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: printing
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: printing
   type: ClusterIP
   ports:

@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: notification
     shard: blue
   name: notification-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: notification
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: notification
         shard: blue
     spec:
       containers:
       - name: notification
-        image: 192.168.1.8/demo-app/notification:latest
+        image: harbor.pdmodernapps.com/atrejomora/notification:latest
         imagePullPolicy: Always 
         command:
         - "java"
@@ -52,28 +52,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: notification
     shard: green
   name: notification-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: notification
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: notification
         shard: green
     spec:
       containers:
         - name: notification
-          image: 192.168.1.8/demo-app/notification:latest
+          image: harbor.pdmodernapps.com/atrejomora/notification:latest
           imagePullPolicy: Always
           command:
             - "java"
@@ -102,10 +102,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: notification
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: notification  
   type: ClusterIP
   ports:

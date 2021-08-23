@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: payments
     shard: blue
   name: payments-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: payments
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: payments
         shard: blue
     spec:
       containers:
       - name: payments
-        image: 192.168.1.8/demo-app/payments:latest
+        image: harbor.pdmodernapps.com/atrejomora/payments:latest
         imagePullPolicy: Always
         command:
         - "dotnet"
@@ -52,28 +52,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: payments
     shard: green
   name: payments-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: payments
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: payments
         shard: green
     spec:
       containers:
         - name: payments
-          image: 192.168.1.8/demo-app/payments:latest
+          image: harbor.pdmodernapps.com/atrejomora/payments:latest
           imagePullPolicy: Always
           command:
             - "dotnet"
@@ -102,10 +102,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: payments
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: payments
   type: ClusterIP
   ports:

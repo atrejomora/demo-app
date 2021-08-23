@@ -1,5 +1,5 @@
-application: tacocat
-cluster: cluster1
+application: polyglot-app
+cluster: tkg-cluster
 service: delivery
 shard: primary
 customTags:

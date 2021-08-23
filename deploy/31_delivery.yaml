@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: delivery
     shard: blue
   name: delivery-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: delivery
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: delivery
         shard: blue
     spec:
       containers:
       - name: delivery
-        image: 192.168.1.8/demo-app/delivery:latest
+        image: harbor.pdmodernapps.com/atrejomora/delivery:latest
         imagePullPolicy: Always
         command:
         - "java"
@@ -52,28 +52,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: delivery
     shard: green
   name: delivery-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: delivery
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: delivery
         shard: green
     spec:
       containers:
         - name: delivery
-          image: 192.168.1.8/demo-app/delivery:latest
+          image: harbor.pdmodernapps.com/atrejomora/delivery:latest
           imagePullPolicy: Always
           command:
             - "java"
@@ -102,10 +102,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: delivery
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: delivery  
   type: ClusterIP
   ports:

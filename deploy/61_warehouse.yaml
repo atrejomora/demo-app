@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: warehouse
     shard: blue
   name: warehouse-blue
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: warehouse
       shard: blue
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: warehouse
         shard: blue
     spec:
       containers:
       - name: warehouse
-        image: 192.168.1.8/demo-app/warehouse:latest
+        image: harbor.pdmodernapps.com/atrejomora/warehouse:latest
         imagePullPolicy: Always
         command:
         - "python3"
@@ -52,28 +52,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tacocat
+    app: polyglot-app
     service: warehouse
     shard: green
   name: warehouse-green
-  namespace: tacocat
+  namespace: polyglot-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tacocat
+      app: polyglot-app
       service: warehouse
       shard: green
   template:
     metadata:
       labels:
-        app: tacocat
+        app: polyglot-app
         service: warehouse
         shard: green
     spec:
       containers:
         - name: warehouse
-          image: 192.168.1.8/demo-app/warehouse:latest
+          image: harbor.pdmodernapps.com/atrejomora/warehouse:latest
           imagePullPolicy: Always
           command:
             - "python3"
@@ -102,10 +102,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: warehouse
-  namespace: tacocat
+  namespace: polyglot-app
 spec: 
   selector:
-    app: tacocat
+    app: polyglot-app
     service: warehouse
   type: ClusterIP
   ports:
